@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../a file of wue.js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>name:{{name}}</div>
+        <p v-text="name">9999999999999999999</p>
+        <h1 v-text="name">name</h1>
+        <!-- v-text,v-html会覆盖元素中原本的内容(其他不会了)
+ ,但是{{}}只会踢飞自己的这个占位符不会把其他元素清空-->
+            <div>{{age}}</div>
+            <div v-text="age"></div>
+            <h1 v-html="age">21313131313131</h1>
+            <input type="text" :value="button+'123'">
+            <!-- v-bind:指令可以简写为:  用来绑定属性-->
+            <input type="button" value="button" v-on:click="show">
+            <!-- v-on:指令可以缩写为 @  用来绑定事件-->
+            <div ></div>
+        </div>
+    <script>
+        //注意在VM内部中想要获取data或methods中的内容要用this
+        var vm =new Vue({
+            el:"#app",
+            data:{
+                name:"sb",
+                age:"<h1>i'm 21 years old</h1>",
+            
+                //想要渲染h1 要用v-html 用{{}},和v-text都会直接把h1直接显示出来而不能渲染
+                button:"按钮"
+            },
+            methods:{//这个methods属性中定义了当前Vue实例所有可用方法
+                show(){
+                    this.age="I am changed"
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
